@@ -108,12 +108,12 @@
     <footer>
         <hr>
         <h3 id="faq">질문과 답변</h3>
-
-        <p><b>Q. 꼬맨틀은 무엇인가요?</b></p>
-        <p>
+        <Toggle :title="질문" :answer="답장"></Toggle>
+        <p @click="toggle_off_0()"><b>Q. 꼬맨틀은 무엇인가요?</b></p>
+        <p v-if="display[0]">
             A.
         </p>
-        <ul>
+        <ul id="answer" v-if="display[0]">
             <li>
                 꼬맨틀은 오늘의 단어를 맞추는 게임입니다.
             정답 단어를 추측하면, 추측한 단어가 정답 단어와 얼마나 유사한지 유사도 점수로 알려줍니다.
@@ -121,11 +121,11 @@
             </li>
         </ul>
         
-        <p><b>Q. 정답 단어에는 어떤 단어가 포함되어 있나요?</b></p>
-        <p>
+        <p @click="toggle_off_1()"><b>Q. 정답 단어에는 어떤 단어가 포함되어 있나요?</b></p>
+        <p v-if="display[1]">
             A.
         </p>
-        <ul>
+        <ul v-if="display[1]">
             <li>
                 정답 단어는 명사 뿐만 아니라 동사, 형용사 등 모든 품사를 포함하며, 품사의 기본형만 해당합니다.<br>
                 <span class="subtext">예시) 행복, 기쁘다, 사랑하다, 야옹, 그래도, 갑자기</span>
@@ -292,7 +292,24 @@
 </template>
 
 <script setup>
-import Result from './Result.vue'
+import Toggle from './Toggle.vue';
+import Result from './Result.vue';
+import { ref } from 'vue';
+
+let display = ref([false, false, false]);
+
+function toggle_off_0() {
+    console.log("toggle1!!")
+    display.value[0] = !display.value[0];
+    console.log(display.value[0])
+}
+
+function toggle_off_1() {
+    console.log("toggle2!!")
+    display.value[1] = !display.value[1];
+}
+
+
 </script>
 
 

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Semantle from '../views/Semantle.vue'
 import Words from '../views/Words.vue'
+import bootstrap from '../views/BootStrap.vue';
 
 const routes = [
   {
@@ -26,7 +27,12 @@ const routes = [
     path: '/words',
     name: 'Words',
     component: Words,
-  }
+  },
+  {
+    path: '/bootstrap',
+    nane: 'Bootstrap',
+    component: bootstrap,
+  },
 ]
 
 const router = createRouter({
